@@ -1,0 +1,263 @@
+:root {
+  --fondo: #0f172a;
+  --panel: #1e293b;
+  --panel-2: #273449;
+  --borde: #334155;
+  --texto: #e2e8f0;
+  --sutil: #94a3b8;
+  --acento: #38bdf8;
+  --acento-fuerte: #0ea5e9;
+  --error: #f87171;
+
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--texto);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+}
+
+a {
+  color: var(--acento);
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  background: var(--acento-fuerte);
+  color: #04293a;
+  font-weight: 600;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button.enlace {
+  background: none;
+  color: var(--acento);
+  padding: 0;
+  font-weight: 500;
+}
+
+button.enlace.peligro {
+  color: var(--error);
+}
+
+.acciones {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.paginacion {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--borde);
+  background: var(--panel-2);
+  color: var(--texto);
+  font: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--acento);
+}
+
+.sutil {
+  color: var(--sutil);
+  font-size: 0.9rem;
+}
+
+.error {
+  color: var(--error);
+  font-size: 0.9rem;
+}
+
+.tarjeta {
+  background: var(--panel);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+}
+
+/* ---- Login ---- */
+.login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.login-tarjeta {
+  width: min(360px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.login-tarjeta h1 {
+  margin: 0;
+}
+
+.login-tarjeta label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+
+/* ---- App shell ---- */
+.app {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+}
+
+.lateral {
+  background: var(--panel);
+  border-right: 1px solid var(--borde);
+  padding: 1.2rem 1rem;
+}
+
+.marca {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.lateral nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.grupo-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.grupo-titulo {
+  color: var(--sutil);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0 0.7rem;
+  margin-bottom: 0.2rem;
+}
+
+.lateral nav a {
+  padding: 0.5rem 0.7rem;
+  border-radius: 8px;
+  color: var(--texto);
+}
+
+.lateral nav a.active {
+  background: var(--panel-2);
+  color: var(--acento);
+}
+
+.principal {
+  display: flex;
+  flex-direction: column;
+}
+
+.barra {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1.5rem;
+  border-bottom: 1px solid var(--borde);
+}
+
+.espaciador {
+  flex: 1;
+}
+
+.contenido {
+  padding: 1.5rem;
+}
+
+/* ---- Utilidades ---- */
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.formulario-en-linea {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.formulario-en-linea input {
+  flex: 1;
+  min-width: 120px;
+}
+
+.comentarios {
+  margin-top: 0.8rem;
+  border-top: 1px solid var(--borde);
+  padding-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla th,
+.tabla td {
+  text-align: left;
+  padding: 0.55rem 0.6rem;
+  border-bottom: 1px solid var(--borde);
+}
+
+.tabla th {
+  color: var(--sutil);
+  font-weight: 600;
+  font-size: 0.85rem;
+}

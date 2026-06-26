@@ -1,0 +1,30 @@
+# Postgres dedicado de GmintaDocs (independiente de cualquier otro proyecto).
+# Levanta solo el motor; las bases las crea/migra la API al arrancar:
+#   - gmintadocs_maestro  -> se crea aquí (POSTGRES_DB) y la migra el host al iniciar.
+#   - gmintadocs_empresa_<id> -> se crean al aprovisionar cada empresa (POST /api/empresas/{id}/aprovisionar).
+#
+# Uso:
+#   docker compose up -d         # arranca la BD
+#   docker compose down          # la detiene (conserva los datos en el volumen)
+#   docker compose down -v       # la detiene y BORRA los datos (volumen)
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: gmintadocs-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: gmintadocs_maestro
+    ports:
+      - "5433:5432"
+    volumes:
+      - gmintadocs_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d gmintadocs_maestro"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  gmintadocs_pgdata:

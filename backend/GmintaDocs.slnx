@@ -1,0 +1,62 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Host/">
+    <Project Path="src/Host/GmintaDocs.Api/GmintaDocs.Api.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/01-Identidad/">
+    <Project Path="src/Modules/01-Identidad/GmintaDocs.Identidad.Application/GmintaDocs.Identidad.Application.csproj" />
+    <Project Path="src/Modules/01-Identidad/GmintaDocs.Identidad.Domain/GmintaDocs.Identidad.Domain.csproj" />
+    <Project Path="src/Modules/01-Identidad/GmintaDocs.Identidad.Infrastructure/GmintaDocs.Identidad.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/01-Organizacion/">
+    <Project Path="src/Modules/01-Organizacion/GmintaDocs.Organizacion.Application/GmintaDocs.Organizacion.Application.csproj" />
+    <Project Path="src/Modules/01-Organizacion/GmintaDocs.Organizacion.Domain/GmintaDocs.Organizacion.Domain.csproj" />
+    <Project Path="src/Modules/01-Organizacion/GmintaDocs.Organizacion.Infrastructure/GmintaDocs.Organizacion.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/02-AdminDirectorios/">
+    <Project Path="src/Modules/02-AdminDirectorios/GmintaDocs.AdminDirectorios.Application/GmintaDocs.AdminDirectorios.Application.csproj" />
+    <Project Path="src/Modules/02-AdminDirectorios/GmintaDocs.AdminDirectorios.Domain/GmintaDocs.AdminDirectorios.Domain.csproj" />
+    <Project Path="src/Modules/02-AdminDirectorios/GmintaDocs.AdminDirectorios.Infrastructure/GmintaDocs.AdminDirectorios.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/02-AdminFormularios/">
+    <Project Path="src/Modules/02-AdminFormularios/GmintaDocs.AdminFormularios.Application/GmintaDocs.AdminFormularios.Application.csproj" />
+    <Project Path="src/Modules/02-AdminFormularios/GmintaDocs.AdminFormularios.Domain/GmintaDocs.AdminFormularios.Domain.csproj" />
+    <Project Path="src/Modules/02-AdminFormularios/GmintaDocs.AdminFormularios.Infrastructure/GmintaDocs.AdminFormularios.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/03-Tareas/">
+    <Project Path="src/Modules/03-Tareas/GmintaDocs.Tareas.Application/GmintaDocs.Tareas.Application.csproj" />
+    <Project Path="src/Modules/03-Tareas/GmintaDocs.Tareas.Domain/GmintaDocs.Tareas.Domain.csproj" />
+    <Project Path="src/Modules/03-Tareas/GmintaDocs.Tareas.Infrastructure/GmintaDocs.Tareas.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/03-Workflow/">
+    <Project Path="src/Modules/03-Workflow/GmintaDocs.Workflow.Application/GmintaDocs.Workflow.Application.csproj" />
+    <Project Path="src/Modules/03-Workflow/GmintaDocs.Workflow.Domain/GmintaDocs.Workflow.Domain.csproj" />
+    <Project Path="src/Modules/03-Workflow/GmintaDocs.Workflow.Infrastructure/GmintaDocs.Workflow.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/04-GestionDocumental/">
+    <Project Path="src/Modules/04-GestionDocumental/GmintaDocs.GestionDocumental.Application/GmintaDocs.GestionDocumental.Application.csproj" />
+    <Project Path="src/Modules/04-GestionDocumental/GmintaDocs.GestionDocumental.Domain/GmintaDocs.GestionDocumental.Domain.csproj" />
+    <Project Path="src/Modules/04-GestionDocumental/GmintaDocs.GestionDocumental.Infrastructure/GmintaDocs.GestionDocumental.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/05-Plantillas/">
+    <Project Path="src/Modules/05-Plantillas/GmintaDocs.Plantillas.Application/GmintaDocs.Plantillas.Application.csproj" />
+    <Project Path="src/Modules/05-Plantillas/GmintaDocs.Plantillas.Domain/GmintaDocs.Plantillas.Domain.csproj" />
+    <Project Path="src/Modules/05-Plantillas/GmintaDocs.Plantillas.Infrastructure/GmintaDocs.Plantillas.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/06-Reportes/">
+    <Project Path="src/Modules/06-Reportes/GmintaDocs.Reportes.Application/GmintaDocs.Reportes.Application.csproj" />
+    <Project Path="src/Modules/06-Reportes/GmintaDocs.Reportes.Domain/GmintaDocs.Reportes.Domain.csproj" />
+    <Project Path="src/Modules/06-Reportes/GmintaDocs.Reportes.Infrastructure/GmintaDocs.Reportes.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/07-Colaboracion/">
+    <Project Path="src/Modules/07-Colaboracion/GmintaDocs.Colaboracion.Application/GmintaDocs.Colaboracion.Application.csproj" />
+    <Project Path="src/Modules/07-Colaboracion/GmintaDocs.Colaboracion.Domain/GmintaDocs.Colaboracion.Domain.csproj" />
+    <Project Path="src/Modules/07-Colaboracion/GmintaDocs.Colaboracion.Infrastructure/GmintaDocs.Colaboracion.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Shared/">
+    <Project Path="src/Shared/GmintaDocs.CQRS/GmintaDocs.CQRS.csproj" />
+    <Project Path="src/Shared/GmintaDocs.Multitenancy/GmintaDocs.Multitenancy.csproj" />
+    <Project Path="src/Shared/GmintaDocs.SharedKernel/GmintaDocs.SharedKernel.csproj" />
+  </Folder>
+</Solution>

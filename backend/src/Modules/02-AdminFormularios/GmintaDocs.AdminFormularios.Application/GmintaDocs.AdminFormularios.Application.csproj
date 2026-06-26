@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\GmintaDocs.AdminFormularios.Domain\GmintaDocs.AdminFormularios.Domain.csproj" />
+    <ProjectReference Include="..\..\..\Shared\GmintaDocs.CQRS\GmintaDocs.CQRS.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
