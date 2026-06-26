@@ -100,6 +100,8 @@ if (app.Configuration.GetValue<bool>("Persistencia:MigrarMaestraAlArrancar"))
 {
     await app.Services.AplicarMigracionesMaestrasAsync();
     await app.Services.SembrarIdentidadAsync(app.Configuration);
+    // Empresa inicial + su BD dedicada (opt-in), para que el sistema quede usable de punta a punta.
+    await app.Services.AprovisionarEmpresaInicialAsync(app.Configuration);
 }
 
 // Primer middleware del pipeline: captura excepciones no controladas y responde ProblemDetails.
