@@ -1,0 +1,96 @@
+name: E2E (API)
+
+# Levanta Postgres + la API .NET y corre la suite Playwright (a nivel de API) de e2e/.
+# La API se autoarranca: migra la BD maestra, siembra el admin y aprovisiona la
+# empresa inicial (flags en appsettings.json), así que no hace falta seed manual.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: gmintadocs_maestro
+        ports:
+          # Mapea al 5433 que esperan appsettings.json (Maestro/PlantillaTenant/Tenants:1).
+          - 5433:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d gmintadocs_maestro"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: e2e/package-lock.json
+
+      - name: Compilar la API
+        working-directory: backend
+        run: dotnet build src/Host/GmintaDocs.Api -c Release
+
+      - name: Arrancar la API (HTTP, sin redirect a https)
+        working-directory: backend
+        env:
+          ASPNETCORE_ENVIRONMENT: Development
+          # Solo HTTP: sin puerto https, UseHttpsRedirection no redirige (307).
+          ASPNETCORE_URLS: http://+:5289
+        run: |
+          nohup dotnet run --project src/Host/GmintaDocs.Api -c Release --no-build --no-launch-profile \
+            > "${{ runner.temp }}/api.log" 2>&1 &
+          echo "API lanzada en segundo plano."
+
+      - name: Esperar a que la API responda
+        run: |
+          for i in $(seq 1 60); do
+            if curl -sf http://localhost:5289/openapi/v1.json > /dev/null; then
+              echo "API lista tras $((i*3))s."; exit 0
+            fi
+            sleep 3
+          done
+          echo "::error::La API no respondió a tiempo."
+          cat "${{ runner.temp }}/api.log" || true
+          exit 1
+
+      - name: Instalar dependencias e2e
+        working-directory: e2e
+        run: npm ci
+
+      - name: Ejecutar la suite Playwright
+        working-directory: e2e
+        env:
+          API_BASE_URL: http://localhost:5289
+        run: npx playwright test
+
+      - name: Subir reporte HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: e2e/playwright-report/
+          retention-days: 7
+
+      - name: Logs de la API si algo falló
+        if: failure()
+        run: cat "${{ runner.temp }}/api.log" || true
