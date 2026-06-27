@@ -16,6 +16,9 @@ const API_BASE_URL = process.env.API_BASE_URL ?? 'https://localhost:7275';
 
 export default defineConfig({
   testDir: './tests',
+  // Restablece el entorno tras la suite: borra empresas de prueba y sus BD
+  // por-tenant, conservando solo la empresa demo sembrada (ver el archivo).
+  globalTeardown: './global-teardown.ts',
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
