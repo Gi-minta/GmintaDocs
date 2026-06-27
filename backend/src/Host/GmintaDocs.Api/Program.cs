@@ -114,7 +114,12 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-app.UseHttpsRedirection();
+// En desarrollo NO redirigimos a HTTPS: el SPA llega vía el proxy de Vite sobre
+// http://localhost:5289. El 307 a https://localhost:7275 es cross-origin y el
+// navegador descarta el header Authorization al seguirlo → 401 y cierre de sesión
+// en cada página autenticada. En producción (un solo origen) sí se fuerza HTTPS.
+if (!app.Environment.IsDevelopment())
+    app.UseHttpsRedirection();
 
 app.UseCors(PoliticaCors);
 
